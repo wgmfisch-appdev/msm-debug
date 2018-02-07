@@ -6,7 +6,7 @@ class DirectorsController < ApplicationController
   end
 
   def show
-    @director = Director.find(params["id_to_display"])
+    @director = Director.find(params.fetch("id_to_display"))
 
     render("director_templates/show.html.erb")
   end
@@ -18,34 +18,34 @@ class DirectorsController < ApplicationController
   def create_row
     @director = Director.new
 
-    @director.dob = params["the_dob"]
-    @director.name = params["the_name"]
-    @director.bio = params["the_bio"]
-    @director.image_url = params["the_image_url"]
+    @director.dob = params.fetch("the_dob")
+    @director.name = params.fetch("the_name")
+    @director.bio = params.fetch("the_bio")
+    @director.image_url = params.fetch("the_image_url")
 
     redirect_to("/directors", :notice => "Director created successfully.")
   end
 
   def edit_form
-    @director = Director.find(params["prefill_with_id"])
+    @director = Director.find(params.fetch("prefill_with_id"))
 
     render("director_templates/edit_form.html.erb")
   end
 
   def update_row
-    @director = Director.find(params["id_to_modify"])
+    @director = Director.find(params.fetch("id_to_modify"))
 
-    @director.dob = params[dob]
-    @director.name = params[name]
-    @director.bio = params[bio]
-    @director.image_url = params[image_url]
+    @director.dob = params.fetch(dob)
+    @director.name = params.fetch(name)
+    @director.bio = params.fetch(bio)
+    @director.image_url = params.fetch(image_url)
     @save
 
     redirect_to("/directors/#{@director.id}", :notice => "Director updated successfully.")
   end
 
   def destroy_row
-    @director = Director.find(params["id_to_remove"])
+    @director = Director.find(params.fetch("id_to_remove"))
 
     redirect_to("/directors", :notice => "Director deleted successfully.")
   end
