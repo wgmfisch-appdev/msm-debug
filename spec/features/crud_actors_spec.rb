@@ -392,7 +392,7 @@ feature "ACTORS" do
       click_on "Edit actor"
       click_on "Update actor"
 
-      expect(page).to have_current_path(details_page_path, only_path: true)
+      expect(page).to have_current_path(details_page_path, ignore_query: true)
     end
   end
 

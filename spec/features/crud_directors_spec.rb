@@ -392,7 +392,7 @@ feature "DIRECTORS" do
       click_on "Edit director"
       click_on "Update director"
 
-      expect(page).to have_current_path(details_page_path, only_path: true)
+      expect(page).to have_current_path(details_page_path, ignore_query: true)
     end
   end
 

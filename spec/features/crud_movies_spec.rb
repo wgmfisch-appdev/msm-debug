@@ -461,7 +461,7 @@ feature "MOVIES" do
       click_on "Edit movie"
       click_on "Update movie"
 
-      expect(page).to have_current_path(details_page_path, only_path: true)
+      expect(page).to have_current_path(details_page_path, ignore_query: true)
     end
   end
 
