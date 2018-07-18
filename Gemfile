@@ -54,6 +54,7 @@ group :development, :test do
   gem 'grade_runner', github: 'firstdraft/grade_runner'
   gem 'pry-rails'
   gem 'web_git', github: 'firstdraft/web_git'
+  gem 'draft_log', github: 'firstdraft/draft_log'
 end
 
 group :development do
