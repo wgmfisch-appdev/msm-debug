@@ -53,6 +53,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "console_ip_whitelist", github: "firstdraft/console_ip_whitelist"
   gem 'dotenv-rails'
   gem 'draft_generators', github: 'firstdraft/draft_generators'
   gem 'draft_log', github: 'firstdraft/draft_log'
