@@ -15,6 +15,8 @@ chdir APP_ROOT do
   # Add necessary setup steps to this file.
 
   puts "== Installing dependencies =="
+  system! "rvm install 2.5.1"
+  system! "rvm use 2.5.1 --default"
   system! "bundle install"
 
   # Install JavaScript dependencies if using Yarn
@@ -26,8 +28,10 @@ chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
+  system! "rails db:drop"
   system! "rails db:create"
   system! "rails db:migrate"
+  system! "rails db:seed"
   # system! "bin/rails dev:prime"
 
   # This script is a starting point to setup your application.
