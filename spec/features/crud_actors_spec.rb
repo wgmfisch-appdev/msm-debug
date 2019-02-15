@@ -282,7 +282,7 @@ feature "ACTORS" do
   end
 
   describe "/actors/[ACTOR ID]/edit" do
-    it "has bio pre-populated", points: 3, hint: h("value_attribute") do
+    it "has bio pre-populated", points: 3, hint: h("text_area") do
       actor_to_edit = create(:actor)
 
       visit "/actors"
