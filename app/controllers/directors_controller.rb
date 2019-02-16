@@ -18,10 +18,11 @@ class DirectorsController < ApplicationController
   def create_row
     @director = Director.new
 
-    @director.dob = params.fetch("the_dob")
-    @director.name = params.fetch("the_name")
-    @director.bio = params.fetch("the_bio")
-    @director.image_url = params.fetch("the_image_url")
+    @director.dob = params.fetch("dob")
+    @director.name = params.fetch("name")
+    @director.bio = params.fetch("bio")
+    @director.image_url = params.fetch("image_url")
+    @director.save
 
     redirect_to("/directors", :notice => "Director created successfully.")
   end
@@ -35,10 +36,10 @@ class DirectorsController < ApplicationController
   def update_row
     @director = Director.find(params.fetch("id_to_modify"))
 
-    @director.dob = params.fetch(dob)
-    @director.name = params.fetch(name)
-    @director.bio = params.fetch(bio)
-    @director.image_url = params.fetch(image_url)
+    @director.dob = params.fetch("dob")
+    @director.name = params.fetch("name")
+    @director.bio = params.fetch("bio")
+    @director.image_url = params.fetch("image_url")
     @director.save
 
     redirect_to("/directors/#{@director.id}", :notice => "Director updated successfully.")
@@ -46,7 +47,7 @@ class DirectorsController < ApplicationController
 
   def destroy_row
     @director = Director.find(params.fetch("id_to_remove"))
-
+    @director.destroy
     redirect_to("/directors", :notice => "Director deleted successfully.")
   end
 end
