@@ -17,11 +17,11 @@ class MoviesController < ApplicationController
 
   def create_row
     @movie = Movie.new
-    @movie.title = params.fetch("the_title")
-    @movie.year = params.fetch("the_year")
-    @movie.duration = params.fetch("the_duration")
-    @movie.description = params.fetch("the_description")
-    @movie.image_url = params.fetch("the_image_url")
+    @movie.title = params.fetch("title")
+    @movie.year = params.fetch("year")
+    @movie.duration = params.fetch("duration")
+    @movie.description = params.fetch("description")
+    @movie.image_url = params.fetch("image_url")
     @movie.save
 
     redirect_to("/movies", :notice => "Movie created successfully.")
@@ -34,11 +34,13 @@ class MoviesController < ApplicationController
   end
 
   def update_row
-    @movie.title = params.fetch("title")
-    @movie.year = params.fetch("year")
-    @movie.duration = params.fetch("duration")
-    @movie.description = params.fetch("description")
-    @movie.image_url = params.fetch("image_url")
+    @movie = Movie.find(params.fetch("id_to_modify"))
+    @movie.title = params.fetch("the_title")
+    @movie.year = params.fetch("the_year")
+    @movie.duration = params.fetch("the_duration")
+    @movie.description = params.fetch("the_description")
+    @movie.image_url = params.fetch("the_image_url")
+    @movie.save
 
     redirect_to("/movies/#{@movie.id}", :notice => "Movie updated successfully.")
   end
