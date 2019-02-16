@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # READ
   get("/directors", { :controller => "directors", :action => "index" })
-  get("/directors/id_to_display", { :controller => "directors", :action => "show" })
+  get("/directors/:id_to_display", { :controller => "directors", :action => "show" })
 
   # UPDATE
   get("/directors/:prefill_with_id/edit", { :controller => "directors", :action => "edit_form" })

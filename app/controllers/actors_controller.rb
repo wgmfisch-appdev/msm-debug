@@ -20,6 +20,7 @@ class ActorsController < ApplicationController
 
     @actor.dob = params.fetch("dob")
     @actor.name = params.fetch("name")
+    @actor.bio = params.fetch("bio")
     @actor.image_url = params.fetch("image_url")
     @actor.save
 
@@ -45,7 +46,7 @@ class ActorsController < ApplicationController
   end
 
   def destroy_row
-    @actor = Actor.find(params.fetch(""))
+    @actor = Actor.find(params.fetch("id_to_remove"))
     @actor.destroy
 
     redirect_to("/actors", :notice => "Actor deleted successfully.")

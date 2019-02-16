@@ -1,6 +1,6 @@
 class DirectorsController < ApplicationController
   def index
-    directors = Director.all
+    @directors = Director.all
 
     render("director_templates/index.html.erb")
   end
@@ -8,7 +8,7 @@ class DirectorsController < ApplicationController
   def show
     @director = Director.find(params.fetch("id_to_display"))
 
-    render("director_templates/show.html.erb")
+    render("director_templates/show_details.html.erb")
   end
 
   def new_form
@@ -39,7 +39,7 @@ class DirectorsController < ApplicationController
     @director.name = params.fetch(name)
     @director.bio = params.fetch(bio)
     @director.image_url = params.fetch(image_url)
-    @save
+    @director.save
 
     redirect_to("/directors/#{@director.id}", :notice => "Director updated successfully.")
   end
