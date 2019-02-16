@@ -6,7 +6,7 @@ class ActorsController < ApplicationController
   end
 
   def show
-    @actor = Actor.find(fetch("id_to_display"))
+    @actor = Actor.find(params.fetch("id_to_display"))
 
     render("actor_templates/show.html.erb")
   end
@@ -18,36 +18,36 @@ class ActorsController < ApplicationController
   def create_row
     @actor = Actor.new
 
-    @actor.dob = fetch("dob")
-    @actor.name = fetch("name")
-    @actor.image_url = fetch("image_url")
+    @actor.dob = params.fetch("dob")
+    @actor.name = params.fetch("name")
+    @actor.image_url = params.fetch("image_url")
     @actor.save
 
     redirect_to("/actors", :notice => "Actor created successfully.")
   end
 
   def edit_form
-    @actor = Actor.find(fetch("prefill_with_id"))
+    @actor = Actor.find(params.fetch("prefill_with_id"))
 
     render("actor_templates/edit_form.html.erb")
   end
 
   def update_row
-    @actor = Actor.find(fetch("id_to_modify"))
+    @actor = Actor.find(params.fetch("id_to_modify"))
 
-    @actor.dob = fetch("dob")
-    @actor.name = fetch("name")
-    @actor.bio = fetch("bio")
-    @actor.image_url = fetch("image_url")
+    @actor.dob = params.fetch("dob")
+    @actor.name = params.fetch("name")
+    @actor.bio = params.fetch("bio")
+    @actor.image_url = params.fetch("image_url")
     @actor.save
 
     redirect_to("/actors/#{@actor.id}", :notice => "Actor updated successfully.")
   end
 
   def destroy_row
-
+    @actor = Actor.find(params.fetch(""))
     @actor.destroy
 
-    redirect_to("/actors", :notice => "Actor deleted successfully.)
+    redirect_to("/actors", :notice => "Actor deleted successfully.")
   end
 end
